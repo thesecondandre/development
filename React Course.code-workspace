@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "assignment2"
+		},
+		{
+			"path": "base-syntax--assignment-problem"
+		},
+		{
+			"path": "burger-builder"
+		},
+		{
+			"path": "http-module"
+		},
+		{
+			"path": "react-complete-guide"
+		}
+	],
+	"settings": {}
+}
