@@ -31,7 +31,7 @@ class BurgerBuilder extends Component {
                 this.setState({ ingredients: response.data });
             })
             .catch(error => {
-                this.setState({error: true});
+                this.setState({ error: true });
             });
     }
 
@@ -84,29 +84,14 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         // alert('You continue');
-        this.setState({ loading: true });
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'Andre de Alcantara Campos',
-                address: {
-                    street: 'Av. das Araucarias',
-                    zipCode: '12345',
-                    city: 'Brasilia',
-                    country: 'Brasil'
-                },
-                email: 'test@test.com'
-            },
-            deliveryMethod: 'fastest'
-        }
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({ loading: false, purchasing: false });
-            })
-            .catch(error => {
-                this.setState({ loading: false, purchasing: false });
-            });
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?meat=' + encodeURIComponent(this.state.ingredients.meat)
+                + '&bacon=' + encodeURIComponent(this.state.ingredients.bacon)
+                + '&cheese=' + encodeURIComponent(this.state.ingredients.cheese)
+                + '&salad=' + encodeURIComponent(this.state.ingredients.salad)
+                + '&price=' + encodeURIComponent(this.state.totalPrice)
+        });
     }
 
     render() {
